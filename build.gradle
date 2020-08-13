@@ -40,7 +40,12 @@ dependencies {
 	}
     implementation("org.apache.httpcomponents:httpclient")
     compileOnly("org.springframework.boot:spring-boot-devtools")
-
+	
+	//watson
+	compile 'com.ibm.watson:ibm-watson:8.0.0'
+	
+	compile 'org.json:json:20180813'
+    
     // needed for IntelliJ
     compileOnly("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
