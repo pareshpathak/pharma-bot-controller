@@ -33,12 +33,15 @@ public class DialogService {
 
 	public JSONObject processDialog(String message)
 			throws IOException {
+		log.debug("after calling process Dialog message: {}", message);
 		LogManager.getLogManager().reset();
 		String watsonOutput = "";
 		JSONObject jsonObject = new JSONObject(message);
 		String userID = jsonObject.get("userName").toString();
 		JSONObject jsonResponse = new JSONObject();
 		JSONObject jsonWatson = new JSONObject();
+		log.debug("after calling process Dialog ConversationSessionDTO userID: {}", userID);
+		log.debug("after calling process Dialog ConversationSessionDTO apikey: {}", Constants.APIKEY);
 
 		// Set up Assistant service.
 		Authenticator authenticator = new IamAuthenticator(Constants.APIKEY);

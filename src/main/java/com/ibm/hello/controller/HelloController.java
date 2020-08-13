@@ -94,23 +94,13 @@ public class HelloController {
    
 
 	@PostMapping(path = "/converse", produces = "application/json")
-	@ApiResponses(value = {
-            @ApiResponse(code = 400, message = "Content body is missing"),
-            @ApiResponse(code = 406, message = "Name parameter missing"),
-            @ApiResponse(code = 415, message = "Missing content type")
-    })
-	public String processDialog(@Valid @RequestBody String message,
-            @ApiParam(
-                    allowableValues = "Dialog",
-                    value = "the beanName for the service implementation that should be used to fulfill the request")
-            @RequestHeader(name = "serviceName", required = false) final String serviceName
-    ) {
+	public String processDialog(@Valid @RequestBody String message) {
 		LOGGER.debug("processDialog - Entry {}", "");
 		String responseJSON="";
 		
 
 		try {
-			responseJSON = getDialogService(serviceName).processDialog(message).toString();
+			responseJSON = dialogService.processDialog(message).toString();
 		
 			LOGGER.debug("after calling process Dialog ConversationSessionDTO response: {}", "");
 		} catch (Exception exception) {
